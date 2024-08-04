@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <title>TubeFetch</title>
+</head>
+<body class="bg-gray-800 text-white">
+   <div class="bg-gray-900 items-center max-w-4xl mx-auto mt-8 p-6">
+    <div class="text-center text-3xl font-bold mb-6">
+      <span> Youtube Video Details | </span>
+      <a th:href="@{/}" class="text-blue-500 hover:bg-white"> Find New Details 🔎</a>
+      <hr>
+    </div>
+    
+    <div class="mb-6">
+      <label for="title" class="text-3xl text-green-500 font-bold"> Title : </label>
+      <span th:text="${vtitle}" class="text-xl font-semibold"></span>
+    </div>
+
+    <div class="mb-6">
+      <label for="thumnail" class="text-3xl text-green-500 font-bold"> Thumbnail : </label>
+      <img th:src="${vthumb}" alt="video thumbnail" class="max-w-full h-auto">
+    </div>
+
+    <div class="mb-6">
+      <label for="tags" class="text-3xl text-green-500 font-bold"> Tags : </label>
+      <span th:each="tag : ${vtags}" th:text="${tag} + ', '" class="font-bold"></span>
+    </div>
+   
+    <div class="mb-10">
+      <label for="description" class="text-3xl text-green-500 font-bold"> Descrption : </label>
+      <p th:text="${vdesc}"></p>
+    </div>
+
+   </div>
+</body>
+</html>
