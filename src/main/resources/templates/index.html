@@ -7,16 +7,22 @@
     <title>TubeFetch</title>
 </head>
 <body class="bg-gray-800 text-white">
-   <div class="items-center justify-center h-screen flex">
-         <form th:action="@{/processing}" method="post" class="bg-gray-900 p-8 rounded ">
-           <h1 class="text-8xl font-bold text-center mb-6"> Youtube Video Data Scrapper !!</h1>
-           
-           <label class="block text-2xl font-medium mb-6"
-           for="videoLink"> Enter your video Link</label>
-          
-           <input class="w-full border rounded-md bg-gray-800" type="text" name="videoLink" id="videoLink" required>
-        <button class="mt-6 text-2xl bg-blue-200 rounded hover:bg-blue-700 py-2 px-8" type="submit">Click Here</button>
-     </form>
-   </div>
+
+<div class="absolute top-2 right-10 h-16 w-65 text-3xl">TubeFetch</div>
+
+
+<div class="items-center justify-center h-screen flex">
+    <form th:action="@{/processing}" method="post" class="bg-gray-900 p-8 rounded ">
+        <h1 class="text-6xl font-bold text-center mb-6"> Youtube Video Data Scrapper !!</h1>
+
+        <label class="block text-2xl font-medium mb-6"
+               for="videoLink"> Enter youtube video Link : </label>
+
+        <input class="w-full border rounded-md bg-gray-800" type="text" name="videoLink" id="videoLink" required>
+
+        <div class="container py-2 px-10 mx-0 min-w-full grid place-items-center" className="contactdiv">
+            <button class="mt-4 text-2xl bg-blue-200 rounded hover:bg-blue-700 py-2 px-10 text-center">Click Here</button>
+    </form>
+</div>
 </body>
 </html>

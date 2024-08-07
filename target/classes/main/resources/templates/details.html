@@ -10,7 +10,7 @@
 <div class="absolute top-2 right-10 h-16 w-65 text-3xl">TubeFetch</div>
 <div class="bg-gray-900 items-center max-w-4xl mx-auto mt-8 p-6">
     <div class="text-center text-3xl font-bold mb-6">
-        <span> Youtube Video Details: </span>
+        <span> Youtube Video Details</span>
 
         <hr>
     </div>
@@ -29,11 +29,13 @@
     </div>
 
     <div class="relative mb-6">
-        <label for="tags" class="text-3xl text-green-500 font-bold"> Tags : </label>
-        <span id="vtags" th:each="tag : ${vtags}" th:text="${tag} + ', '" class="font-bold"></span>
         <button onclick="copyToClipboard('vtags')" class="absolute right-0 top-0 bg-transparent text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded">
             Copy
         </button>
+        <label for="tags" class="text-3xl text-green-500 font-bold"> Tags : </label>
+
+        <p id="vtags" th:each="tag : ${vtags}" th:text="${tag} + ', '" class="font-bold"></p>
+
     </div>
 
     <div class="relative mb-10">

@@ -7,33 +7,63 @@
     <title>TubeFetch</title>
 </head>
 <body class="bg-gray-800 text-white">
-   <div class="bg-gray-900 items-center max-w-4xl mx-auto mt-8 p-6">
+<div class="absolute top-2 right-10 h-16 w-65 text-3xl">TubeFetch</div>
+<div class="bg-gray-900 items-center max-w-4xl mx-auto mt-8 p-6">
     <div class="text-center text-3xl font-bold mb-6">
-      <span> Youtube Video Details | </span>
-      <a th:href="@{/}" class="text-blue-500 hover:bg-white"> Find New Details 🔎</a>
-      <hr>
+        <span> Youtube Video Details</span>
+
+        <hr>
     </div>
-    
-    <div class="mb-6">
-      <label for="title" class="text-3xl text-green-500 font-bold"> Title : </label>
-      <span th:text="${vtitle}" class="text-xl font-semibold"></span>
+
+    <div class="relative mb-6">
+        <label for="title" class="text-3xl text-green-500 font-bold"> Title : </label>
+        <span id="vtitle" th:text="${vtitle}" class="text-xl font-semibold"></span>
+        <button onclick="copyToClipboard('vtitle')" class="absolute right-0 top-0 bg-transparent text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded">
+            Copy
+        </button>
     </div>
 
     <div class="mb-6">
-      <label for="thumnail" class="text-3xl text-green-500 font-bold"> Thumbnail : </label>
-      <img th:src="${vthumb}" alt="video thumbnail" class="max-w-full h-auto">
+        <label for="thumnail" class="text-3xl text-green-500 font-bold  "> Thumbnail : </label>
+        <img th:src="${vthumb}" alt="video thumbnail" class="max-w-full h-auto mx-12">
     </div>
 
-    <div class="mb-6">
-      <label for="tags" class="text-3xl text-green-500 font-bold"> Tags : </label>
-      <span th:each="tag : ${vtags}" th:text="${tag} + ', '" class="font-bold"></span>
-    </div>
-   
-    <div class="mb-10">
-      <label for="description" class="text-3xl text-green-500 font-bold"> Descrption : </label>
-      <p th:text="${vdesc}"></p>
+    <div class="relative mb-6">
+        <button onclick="copyToClipboard('vtags')" class="absolute right-0 top-0 bg-transparent text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded">
+            Copy
+        </button>
+        <label for="tags" class="text-3xl text-green-500 font-bold"> Tags : </label>
+
+        <span id="vtags" th:each="tag : ${vtags}" th:text="${tag} + ', '" class="font-bold"></span>
+
     </div>
 
-   </div>
+    <div class="relative mb-10">
+        <label for="description" class="text-3xl text-green-500 font-bold"> Descrption : </label>
+        <p id="vdesc" th:text="${vdesc}"></p>
+        <button onclick="copyToClipboard('vdesc')" class="absolute right-0 top-0 bg-transparent text-blue-500 hover:text-blue-700 font-bold py-1 px-2 rounded">
+            Copy
+        </button>
+    </div>
+
+    <div class="container py-2 px-10 mx-0 min-w-full grid place-items-center" className="contactdiv">
+        <a th:href="@{/}"><button class="mt-4 text-2xl bg-blue-200 rounded hover:bg-blue-700 py-2 px-10 text-center"> Find New Details</button></a>
+        <!-- class="text-blue-500 hover:bg-white"> Find New Details 🔎</a> -->
+
+
+    </div>
+
+    <script>
+        function copyToClipboard(elementId) {
+            var tempInput = document.createElement("input");
+            tempInput.style = "position: absolute; left: -1000px; top: -1000px";
+            document.body.appendChild(tempInput);
+            tempInput.value = document.getElementById(elementId).textContent.trim();
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("Copied to clipboard: " + tempInput.value);
+        }
+    </script>
 </body>
 </html>
